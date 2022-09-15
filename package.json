@@ -1,0 +1,51 @@
+{
+  "name": "@northflank/deploy-to-northflank",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "prepare": "husky install",
+    "lint-staged": "lint-staged",
+    "build": "tsc && ncc build build/index.js -m --license licenses.md"
+  },
+  "dependencies": {
+    "@actions/core": "^1.9.1",
+    "@northflank/js-client": "^0.7.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.37.0",
+    "@typescript-eslint/parser": "^5.37.0",
+    "@vercel/ncc": "^0.34.0",
+    "eslint": "^8.23.1",
+    "eslint-config-prettier": "^8.5.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
+    "typescript": "^4.8.3"
+  },
+  "lint-staged": {
+    "**/*.{ts}": [
+      "eslint --fix",
+      "prettier --write --ignore-unknown"
+    ],
+    "**/*.{json,yml}": [
+      "prettier --write --ignore-unknown"
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended",
+      "prettier"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint"
+    ],
+    "root": true
+  },
+  "prettier": {
+    "singleQuote": true,
+    "printWidth": 100,
+    "trailingComma": "all"
+  }
+}

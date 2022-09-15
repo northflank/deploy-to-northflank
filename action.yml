@@ -1,0 +1,34 @@
+name: Deploy to Northflank
+author: Northflank
+description: Deploy Docker images to Northflank by updating the deployment configuration of existing services or jobs via a GitHub action.
+inputs:
+  northflank-api-host:
+    description: Host of the Northflank API.
+    required: false
+    default: https://api.northflank.com
+  northflank-api-key:
+    description: API key to use to authenticate with the Northflank API.
+    required: true
+  project-id:
+    description: ID of the project the service or job to deploy to belongs to.
+    required: true
+  service-id:
+    description: ID of the service to deploy to.
+    required: false
+  job-id:
+    description: ID of the job to deploy to.
+    required: false
+  image-path:
+    description: Path of the Docker image to deploy.
+    required: true
+  credentials-id:
+    description: ID of the registry credentials to use to access the Docker image.
+    required: false
+
+runs:
+  using: node16
+  main: dist/index.js
+
+branding:
+  icon: upload-cloud
+  color: gray-dark
